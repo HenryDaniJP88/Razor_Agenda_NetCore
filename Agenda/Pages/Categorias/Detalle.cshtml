@@ -1,0 +1,28 @@
+﻿@page
+@model Razor_Agenda.Pages.Categorias.DetalleModel
+@{
+    ViewData["Title"] = "Detalle de Categoria";
+}
+@*Creamos el sgte contenedor con Boostrap*@
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="text-info">Detalle de Categoria: @Html.DisplayFor(m => m.Categoria.Id)</h2>
+            <ul class="list-group">
+              <li class="list-group-item">ID: @Html.DisplayFor(m => m.Categoria.Id)</li>
+              <li class="list-group-item">NOMBRE: @Html.DisplayFor(m => m.Categoria.Nombre)</li>
+              <li class="list-group-item">FECHA CREACION: @Html.DisplayFor(m=>m.Categoria.FechaCreacion)</li>
+            </ul>
+
+
+        </div>
+
+    </div>
+    @*Creamos una div que nos permite volver al inicio*@
+    <div class="row">
+        <div class="col-6">
+            @*Boton que hace volver al index*@
+            <a asp-page="Index" class="btn btn-success">Volver</a>
+        </div>
+    </div>
+</div>

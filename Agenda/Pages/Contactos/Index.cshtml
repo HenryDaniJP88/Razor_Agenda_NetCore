@@ -1,0 +1,66 @@
+﻿@page
+@model Razor_Agenda.Pages.Contactos.IndexModel
+@{
+    ViewData["Title"] = "Lista de Contactos";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <h2 class="text-info">Lista de Contactos</h2>
+        </div>
+        <div class="col-3">
+            <a class="btn btn-secondary" asp-page="/Contactos/Crear">Crear Nuevo Contacto</a>
+        </div>
+    </div>
+
+    <br />
+    <br />
+    @if (Model.Contactos.Count()>0)
+    {
+         <table id="tblContactos" class="table table-striped table-bordered" style="width:100%;">
+             <thead>
+                 <tr>
+                    @* cabecera de los datos de la Entidad Contacto*@
+                     <th>@Html.DisplayNameFor(m => m.Contactos.FirstOrDefault().Id)</th>
+                     <th>@Html.DisplayNameFor(m => m.Contactos.FirstOrDefault().Nombre)</th>
+                     <th>@Html.DisplayNameFor(m => m.Contactos.FirstOrDefault().Email)</th>
+                     <th>@Html.DisplayNameFor(m => m.Contactos.FirstOrDefault().Telefono)</th>
+                     <th>@Html.DisplayNameFor(m => m.Contactos.FirstOrDefault().FechaCreacion)</th>
+                      <th>@Html.DisplayNameFor(m => m.Contactos.FirstOrDefault().Categoria)</th>
+                     <th></th>
+                 </tr>
+             </thead>
+             <tbody>
+                 @*Mostramos los datos en base al Modelo Contacto*@
+                @foreach (var contacto in Model.Contactos)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(m => contacto.Id)</td>
+                         <td>@Html.DisplayFor(m => contacto.Nombre)</td>
+                         <td>@Html.DisplayFor(m => contacto.Email)</td>
+                          <td>@Html.DisplayFor(m => contacto.FechaCreacion)</td>
+                         <td>@Html.DisplayFor(m => contacto.Categoria)</td>
+                         <td>
+                             @*Creamos los botones por cada dato/registro de categorias*@
+                             <a class="btn btn-success" asp-page="../Contactos/Detalle" asp-route-id="@contacto.Id">Detalle</a>
+                              <a class="btn btn-warning" asp-page="../Contactos/Editar" asp-route-id="@contacto.Id">Editar</a>
+                              <a class="btn btn-danger" asp-page="../Contactos/Borrar" asp-route-id="@contacto.Id">Borrar</a>
+
+                         </td>
+                  </tr>    
+                }
+
+                
+
+
+             </tbody>
+         </table>
+    }
+    else
+    {
+     <p>No hay contactos</p>
+    }
+
+</div>

@@ -1,0 +1,49 @@
+﻿@page
+@model Razor_Agenda.Pages.Categorias.EditarModel
+@{
+    ViewData["Title"] = "Editar una Categoria";
+}
+@*Creamos el sgte contenedor con Boostrap*@
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <H2 class="text-info">Editar una Categoria</H2>
+
+                <form method="post">
+                    <input type= "hidden" asp-for="Categoria.Id"/> @*Estp nos permiter obtener el id capturado en el OnGet y luego actualizar la Categoria*@
+                    
+                    <div class="mb-3"> @*margren de la parte de abajo de 3 unidades Boostrapt 5, para que los campos no queden tan pegados*@
+                        @*campo de nombre*@ 
+                        <label asp-for="Categoria.Nombre" class="form-label"></label> a@*creamos label, form label es para que se vea lindo*@
+                        <input asp-for="Categoria.Nombre" class="form-control" placeholder="Ingresa el Nombre"/> @*este es el imput, el campo como tal*@
+                        <span asp-validation-for="Categoria.Nombre" class=" text-danger"></span> @*para la validacion del lado del servidor*@
+                    </div>
+
+                     <div class="mb-3"> @*margren de la parte de abajo de 3 unidades Boostrapt 5, para que los campos no queden tan pegados*@
+                        @*campo de Fecha de Creacion*@ 
+                        <label asp-for="Categoria.FechaCreacion" class="form-label"></label> a@*creamos label, form label es para que se vea lindo*@
+                        <input asp-for="Categoria.FechaCreacion" class="form-control" /> @*este es el imput, el campo como tal*@
+                        <span asp-validation-for="Categoria.FechaCreacion" class=" text-danger"></span> @*para la validacion del lado del servidor*@
+                    </div>
+
+                    @*Creamos el Botno para Crear la Categoria*@
+                    <button type="submit" class="btn btn-primary">Editar Categoria</button>
+
+                </form>
+
+        </div>
+
+    </div>
+    @*Creamos una div que nos permite volver al inicio*@
+    <div class="row">
+        <div class="col-6">
+            @*Boton que hace volver al index*@
+            <a asp-page="Index" class="btn btn-success">Volver</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}
