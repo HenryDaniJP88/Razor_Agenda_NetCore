@@ -6,17 +6,19 @@ using Razor_Agenda.Modelos.ViewModels;
 
 namespace Razor_Agenda.Pages.Contactos
 {
-    public class CrearModel : PageModel
+    public class abc_BorrarModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public CrearModel(ApplicationDbContext context)
+        public abc_BorrarModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
         public CrearContactoVm ContactoVm { get; set; }
+
+        //obtenemos los datos del contacto a borrar
         public async Task<IActionResult> OnGet(int id)
         {
             //Esto me va a servir para acceder a la Lista de Contacto y a la Categoria
@@ -27,23 +29,22 @@ namespace Razor_Agenda.Pages.Contactos
                 Contacto = await _context.Contacto.FindAsync(id)
             };
 
-            return Page();
+           return Page();
         }
 
-        //para enviar datos al Server
+        //hacemos el OnPost para eliminar
         public async Task<IActionResult> OnPost()
         {
-            if (ModelState.IsValid)
-            {
-                await _context.Contacto.AddAsync(ContactoVm.Contacto); //enviamos los datos del Contacto de Forma asincorna
-                await _context.SaveChangesAsync();//guardamos los cambios
-                return RedirectToPage("Index"); //Redireccionamos al index de esta pagina de Contacto
+           var contacto = await _context.Contacto.FindAsync(ContactoVm.Contacto.Id);
+           
+           if (contacto == null)
+           {
+             return NotFound();
+           }
 
-            }
-            else
-            {
-                return Page(); //retornamos esta misma pagina 
-            }
+           _context.Contacto.Remove(contacto);
+           await _context.SaveChangesAsync();
+           return RedirectToAction("Index");    
         }
     }
 }

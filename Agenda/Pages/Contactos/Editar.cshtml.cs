@@ -17,14 +17,14 @@ namespace Razor_Agenda.Pages.Contactos
         }
 
         [BindProperty]
-        public CrearContactoVM ContactoVm { get; set; }
+        public CrearContactoVm ContactoVm { get; set; }
         
         //el registro que quiero editar lo obtengo por el ID
         public async Task<IActionResult> OnGet(int id)
         {
             //Esto me va a servir para acceder a la Lista de Contacto y a la Categoria
             //Estos datos vienen del ViewModel "CrearContactoVM"
-            ContactoVm = new CrearContactoVM()
+            ContactoVm = new CrearContactoVm()
             {
                 ListaCategorias = await _context.Categoria.ToListAsync(),
                 Contacto = await _context.Contacto.FindAsync(id)
