@@ -40,8 +40,9 @@
                         <td>@Html.DisplayFor(m => contacto.Id)</td>
                          <td>@Html.DisplayFor(m => contacto.Nombre)</td>
                          <td>@Html.DisplayFor(m => contacto.Email)</td>
-                          <td>@Html.DisplayFor(m => contacto.FechaCreacion)</td>
-                         <td>@Html.DisplayFor(m => contacto.Categoria)</td>
+                         <td>@Html.DisplayFor(m => contacto.Telefono)</td>
+                         <td>@Html.DisplayFor(m => contacto.FechaCreacion)</td>
+                         <td>@Html.DisplayFor(m => contacto.Categoria.Nombre)</td>
                          <td>
                              @*Creamos los botones por cada dato/registro de categorias*@
                              <a class="btn btn-success" asp-page="../Contactos/Detalle" asp-route-id="@contacto.Id">Detalle</a>

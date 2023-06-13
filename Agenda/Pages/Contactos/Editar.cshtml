@@ -1,0 +1,77 @@
+﻿@page
+@model Razor_Agenda.Pages.Contactos.EditarModel
+@{
+    ViewData["Title"] = "Editar Contacto";
+}
+@*Creamos el sgte contenedor con Boostrap*@
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <H2 class="text-info">Editar Contacto</H2>
+
+                <form method="post">
+
+                        @*Creamos un campo de tipo oculto para guardar el id de lo que queremos Editar*@
+                        <input type="hidden" asp-for="ContactoVm.Contacto.Id"/>
+                     
+
+                    <div class="mb-3"> @*margren de la parte de abajo de 3 unidades Boostrapt 5, para que los campos no queden tan pegados*@
+                        @*campo de nombre*@ 
+                        <label asp-for="ContactoVm.Contacto.Nombre" class="form-label"></label> a@*creamos label, form label es para que se vea lindo*@
+                        <input asp-for="ContactoVm.Contacto.Nombre" class="form-control" placeholder="Ingresa el Nombre"/> @*este es el imput, el campo como tal*@
+                        <span asp-validation-for="ContactoVm.Contacto.Nombre" class=" text-danger"></span> @*para la validacion del lado del servidor*@
+                    </div>
+
+                     <div class="mb-3"> @*margren de la parte de abajo de 3 unidades Boostrapt 5, para que los campos no queden tan pegados*@
+                        @*campo de nombre*@ 
+                        <label asp-for="ContactoVm.Contacto.Email" class="form-label"></label> a@*creamos label, form label es para que se vea lindo*@
+                        <input asp-for="ContactoVm.Contacto.Email" class="form-control" placeholder="Ingresa el Email"/> @*este es el imput, el campo como tal*@
+                        <span asp-validation-for="ContactoVm.Contacto.Email" class=" text-danger"></span> @*para la validacion del lado del servidor*@
+                    </div>
+
+                    <div class="mb-3"> @*margren de la parte de abajo de 3 unidades Boostrapt 5, para que los campos no queden tan pegados*@
+                        @*campo de nombre*@ 
+                        <label asp-for="ContactoVm.Contacto.Telefono" class="form-label"></label> a@*creamos label, form label es para que se vea lindo*@
+                        <input asp-for="ContactoVm.Contacto.Telefono" class="form-control" placeholder="Ingresa el Telefono"/> @*este es el imput, el campo como tal*@
+                        <span asp-validation-for="ContactoVm.Contacto.Telefono" class=" text-danger"></span> @*para la validacion del lado del servidor*@
+                    </div>
+
+                    <!--Aqui va la Lista de CATEGORIAS-->
+                    <div class="mb-3">
+                        <label asp-for="ContactoVm.Contacto.Categoria" class="form-label"></label> a@*creamos label, form label es para que se vea lindo*@
+                         
+                        <!--Tiene que desplegar la Lista de Categorias-->
+                        <select asp-for="ContactoVm.Contacto.CategoriaId" 
+                                 asp-items="@(new SelectList(Model.ContactoVm.ListaCategorias,"Id", "Nombre"))" class="form-control">
+                         </select>
+                        
+                        <span asp-validation-for="ContactoVm.Contacto.Telefono" class=" text-danger"></span> @*para la validacion del lado del servidor*@
+                    </div>
+
+                     <div class="mb-3"> @*margren de la parte de abajo de 3 unidades Boostrapt 5, para que los campos no queden tan pegados*@
+                        @*campo de Fecha de Creacion*@ 
+                        <label asp-for="ContactoVm.Contacto.FechaCreacion" class="form-label"></label> a@*creamos label, form label es para que se vea lindo*@
+                        <input asp-for="ContactoVm.Contacto.FechaCreacion" class="form-control" /> @*este es el imput, el campo como tal*@
+                        <span asp-validation-for="ContactoVm.Contacto.FechaCreacion" class=" text-danger"></span> @*para la validacion del lado del servidor*@
+                    </div>
+
+                    @*Creamos el Botno para Crear la Categoria*@
+                    <button type="submit" class="btn btn-primary">Editar Contacto</button>
+
+                </form>
+
+        </div>
+
+    </div>
+    @*Creamos una div que nos permite volver al inicio*@
+    <div class="row">
+        <div class="col-6">
+            @*Boton que hace volver al index*@
+            <a asp-page="Index" class="btn btn-success">Volver</a>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial"/>
+}
