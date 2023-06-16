@@ -40,7 +40,7 @@ namespace Razor_Agenda.Pages.Contactos
                 return NotFound();
             }
 
-            _context.Contacto.Remove(contacto);
+            _context.Contacto.Remove(contacto); //Borramos el contacto en base al id encotrado arriba
             await _context.SaveChangesAsync();
             return RedirectToPage("Index"); //Retorna al Index de Categoria
         }

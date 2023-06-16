@@ -1,10 +1,15 @@
-﻿@page
+﻿@*Index de la pagina de Inicio*@
+@page
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome2</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@*Agregamos un div con boostrap el cual contendra una imagen*@
+<div class="row justify-content-center"> 
+    <div class="col-12 text-center">
+        @*Añadimos la imagen con este comando y que quede en el centro*@
+        <img src="~/img/contacto.jpg" class="img-fluid" />
+    </div>
+
 </div>
